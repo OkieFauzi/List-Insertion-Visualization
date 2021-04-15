@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Insertion</title>
+</head>
+<body>
+    <div>
+        <form action="#" id="form">
+            <textarea name="textarea" id="textarea" cols="30" rows="10" placeholder="Input text here...."></textarea>
+            <button id="insert">Insert</button>
+        </form>
+    </div>
+    <div>
+        <ul id="list"></ul>
+    </div>
+</body>
+<script>
+    //variable declaration
+    var form = document.getElementById('form');
+    var insert = document.getElementById('insert');
+    var list = document.getElementById('list');
+    var textBox = document.getElementById('textarea');
+
+    //input function
+    insert.addEventListener('click', function(e) {
+        e.preventDefault();
+        let textInput = form.elements['textarea'].value;
+        //check if empty
+        if (textInput == null || textInput == "") {
+            alert('the box is empty')
+        } else if ((document.querySelectorAll("#list li").length + 1) % 3 === 0) {
+            var newList = document.createElement('li');
+            newList.style = "color:red";
+            newList.textContent = textInput;
+            list.appendChild(newList);
+        } else {
+            //create element
+            var newList = document.createElement('li');
+            newList.textContent = textInput;
+            list.appendChild(newList);
+        }
+    })
+</script>
+</html>
